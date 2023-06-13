@@ -1,0 +1,9 @@
+api_id = "dev_api_id"
+stage_name = "dev_stage_name"
+usage_plan_name = "dev_usage_plan_name"
+api_key_name = "dev_api_key_name"
+quota_limit = 5000
+quota_offset = 2
+quota_period = "WEEK"
+throttle_burst_limit = 200
+throttle_rate_limit = 100
