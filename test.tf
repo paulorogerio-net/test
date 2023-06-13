@@ -1,24 +1,3 @@
-
-variable "api_id" {
-  description = "The API ID for the API Gateway"
-}
-
-variable "stage_name" {
-  description = "The name of the stage"
-}
-
-variable "usage_plan_name" {
-  description = "The name for the usage plan"
-}
-
-variable "api_key_name" {
-  description = "The name for the API key"
-}
-
-provider "aws" {
-  region = "us-west-2"
-}
-
 resource "aws_api_gateway_usage_plan" "usage_plan" {
   name        = var.usage_plan_name
   description = "A usage plan"
@@ -29,14 +8,14 @@ resource "aws_api_gateway_usage_plan" "usage_plan" {
   }
 
   quota_settings {
-    limit  = 5000
-    offset = 2
-    period = "WEEK"
+    limit  = var.quota_limit
+    offset = var.quota_offset
+    period = var.quota_period
   }
 
   throttle_settings {
-    burst_limit = 200
-    rate_limit  = 100
+    burst_limit = var.throttle_burst_limit
+    rate_limit  = var.throttle_rate_limit
   }
 }
 
